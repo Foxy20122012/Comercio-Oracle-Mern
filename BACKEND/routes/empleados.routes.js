@@ -3,18 +3,9 @@ const{Router}= require('express');
 const router = Router();
 const DB = require('../config/config.js');
 
-router.get('/',(req,res)=>{
 
-    res.status(200).json({
-        message:"Este mensaje es desde el servidor"
-    });
-
-});
-
-
-
-router.get('/fromoracle', async (req,res)=>{
-    const personas=[];
+router.get('/empleados', async (req,res)=>{
+    const empleados=[];
     sql="select * from empleados";
 
     let result = await DB.Open(sql,[],false);
@@ -22,16 +13,15 @@ router.get('/fromoracle', async (req,res)=>{
      console.log(personas)
      result.rows.map(person=>{
         let userSchema ={
-            "id": person[0],
+            "ID": person[0],
             "NOMBRE": person[1],
             "APELLIDO": person[2],
             "CORREO": person[3]
+            
         }
         personas.push(userSchema)
      });
-     res.json({personas});
+     res.json({empleados});
 });
-
-
 
 module.exports = router;
