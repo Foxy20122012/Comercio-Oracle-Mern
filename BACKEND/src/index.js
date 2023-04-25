@@ -5,7 +5,7 @@ const cors = require('cors');
 
 
 const home = require('../routes/home.routes.js');
-const empleados = require('../routes/empleados.routes.js');
+// const empleados = require('../routes/empleados.routes.js');
 const productos = require('../routes/productos.routes.js');
 
 /*Configuraciones */
@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-app.use(empleados);
+// app.use(empleados);
 app.use(home);
 app.use(productos);
 
